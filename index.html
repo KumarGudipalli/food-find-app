@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #container{
+            
+            padding: 2px;
+            background-color: rgb(113, 153, 153);
+            width: 98%;
+            margin: auto;
+        }
+        ul{
+            display: flex;
+            justify-content: end;
+            gap:30px;
+            margin-right: 30px;
+            color: white;
+        }
+        li{
+            list-style: none;
+            
+        }
+        li>a{
+            text-decoration: none;
+            color: black;
+        }
+        li>a:hover{
+            color: red;
+        }
+        img{
+            width: 50%;
+        }
+        #main{
+     display: grid;
+     grid-template-columns: repeat(4,25%);
+        }
+        #meal{
+            margin-left: 450px;
+            width: 450px;
+            height: 30px;
+   
+        }
+        .box{
+            margin-top: 20px;
+         margin-left: 60px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <ul>
+          <li> <a href="">Home</a> </li>
+      <li><a href="./recipe.html"> Receipe of the day</a></li>
+            <li><a href="./latest.html">Latest</a> </li>
+        </ul>
+    </div>
+    <br>
+<input id="meal" type="text" oninput="debounce(display,2000)"  />
+<div></div>
+
+<div id="main">
+  
+</div>
+</body>
+</html>
+<script>
+ 
+
+ 
+
+  let div = document.getElementById("main");
+   async function showMeals(){
+    let input= document.getElementById("meal").value;
+
+    let url =`https://www.themealdb.com/api/json/v1/1/search.php?s=${input}`  
+      
+        let res = await fetch(url)
+
+        let data =  await res.json();
+        
+        
+      return data.meals
+
+   }
+   async function display(items) {
+    div.innerHTML=""
+        let arr = await showMeals();
+
+if(arr == undefined){
+    return false;
+}
+console.log(arr);
+
+         arr.forEach(item =>{
+          
+            let box =  document.createElement("div")
+            box.classList.add("box")
+
+            let p =document.createElement("h4")
+            p.innerText = item.strMeal
+
+            let img = document.createElement("img")
+           img.src = item.strMealThumb
+    box.append(img,p) 
+        
+div.append(box)
+         })
+        }
+
+
+function debounce(func, delay){
+    setTimeout (function(){
+        func()
+    },delay)
+}
+</script>

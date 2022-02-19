@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+           #container{
+            
+            padding: 2px;
+            background-color: rgb(113, 153, 153);
+            width: 98%;
+            margin: auto;
+        }
+        ul{
+            display: flex;
+            justify-content: end;
+            gap:30px;
+            margin-right: 30px;
+            color: white;
+        }
+        li{
+            list-style: none;
+            
+        }
+        li>a{
+            text-decoration: none;
+            color: black;
+        }
+        li>a:hover{
+            color: red;
+        }
+        #form{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 10px;
+            max-width: 20%;
+            margin: auto;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <ul>
+          <li> <a href="">Login</a> </li>
+      <li><a href="">Signup</a></li>
+            <li><a href="./menu.html">Menu</a> </li>
+        </ul>
+    </div>
+    <br>
+    <form id="form">
+        <input placeholder="enter name on card " type="text"> 
+        <input placeholder="enter card number" type="text"> 
+        <input placeholder="enter cvv" type="text"> 
+        <input placeholder="enter expery" type="text">
+        <button onclick="pay()">submit</button>
+    </form>
+  
+   
+       
+    
+</body>
+</html>
+<script>
+    function pay(){
+   alert("your order is PLACED")
+    }
+</script>
